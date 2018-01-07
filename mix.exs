@@ -1,28 +1,77 @@
 defmodule Monocle.Mixfile do
   use Mix.Project
 
+  @version   "1.2.5"
+
+  @deps  [
+    { :credo,    "~> 0.6", only: [ :dev, :test ] },
+    { :dialyxir, "~> 0.4", only: [ :dev, :test ] },
+  ]
+
+  @description """
+    Monocle is a pure-Elixir Markdown converter.
+
+    It is intended to be used as a library (just call Monocle.as_html),
+    but can also be used as a command-line tool (run mix escript.build
+    first).
+
+    Output generation is pluggable.
+    """
+
+  ############################################################
+
   def project do
     [
-      app: :monocle,
-      version: "0.1.0",
-      elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
-      deps: deps()
+      app:           :earmark,
+      version:       @version,
+      elixir:        "~> 1.4",
+      elixirc_paths: elixirc_paths(Mix.env),
+      escript:       escript_config(),
+      deps:          @deps,
+      description:   @description,
+      package:       package(),
+      aliases:       [docs: &docs/1, readme: &readme/1]
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      applications: []
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
-  defp deps do
+  defp package do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      files: [
+        "lib", "src", "tasks", "mix.exs", "README.md"
+      ],
+      maintainers: [
+        "Robert Dober <robert.dober@gmail.com>",
+        "Dave Thomas <dave@pragdave.me>"
+      ],
+      licenses: [
+        "Apache 2 (see the file LICENSE for details)"
+      ],
+      links: %{
+        "GitHub" => "https://github.com/pragdave/earmark",
+      }
     ]
+  end
+
+  defp escript_config do
+    [ main_module: Monocle.CLI ]
+  end
+
+  defp elixirc_paths(:test), do: [ "lib", "test/support" ]
+  defp elixirc_paths(_),     do: [ "lib" ]
+
+  defp docs(args) do
+    Code.load_file "tasks/docs.exs"
+    Mix.Tasks.Docs.run(args)
+  end
+
+  defp readme(args) do
+    Code.load_file "tasks/readme.exs"
+    Mix.Tasks.Readme.run(args)
   end
 end
