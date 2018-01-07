@@ -242,8 +242,10 @@ defmodule Monocle do
 
   ## Author
 
-  Copyright © 2014 Dave Thomas, The Pragmatic Programmers
+  Original Earmark code is Copyright © 2014 Dave Thomas, The Pragmatic Programmers
   @/+pragdave,  dave@pragprog.com
+  Monocle is a derived work from Earmark with the goal of being able to properly sanitize
+  and filter the output of Monocle.as_html to make it more secure for the public web.
 
   Licensed under the same terms as Elixir, which is Apache 2.0.
   """
