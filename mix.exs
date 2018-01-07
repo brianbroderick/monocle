@@ -4,16 +4,15 @@ defmodule Monocle.Mixfile do
   @version   "1.2.5"
 
   @deps  [
-    { :credo,    "~> 0.6", only: [ :dev, :test ] },
-    { :dialyxir, "~> 0.4", only: [ :dev, :test ] },
+    { :credo,    "~> 0.8", only: [ :dev, :test ] },
+    { :dialyxir, "~> 0.5", only: [ :dev, :test ] },
   ]
 
   @description """
     Monocle is a pure-Elixir Markdown converter.
 
-    It is intended to be used as a library (just call Monocle.as_html),
-    but can also be used as a command-line tool (run mix escript.build
-    first).
+    HTML elements are whitelisted and things like HTML classes can be customized to match a
+    website's CSS needs.
 
     Output generation is pluggable.
     """
@@ -22,7 +21,7 @@ defmodule Monocle.Mixfile do
 
   def project do
     [
-      app:           :earmark,
+      app:           :monocle,
       version:       @version,
       elixir:        "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
@@ -46,14 +45,13 @@ defmodule Monocle.Mixfile do
         "lib", "src", "tasks", "mix.exs", "README.md"
       ],
       maintainers: [
-        "Robert Dober <robert.dober@gmail.com>",
-        "Dave Thomas <dave@pragdave.me>"
+        "Brian Broderick <brianbroderick19@gmail.com>"
       ],
       licenses: [
         "Apache 2 (see the file LICENSE for details)"
       ],
       links: %{
-        "GitHub" => "https://github.com/pragdave/earmark",
+        "GitHub" => "https://github.com/brianbroderick/monocle",
       }
     ]
   end
