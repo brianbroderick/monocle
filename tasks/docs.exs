@@ -5,13 +5,13 @@ defmodule Mix.Tasks.Docs do
 
   @moduledoc """
 
-    ex_doc uses earmark. This means we can't have a dependency from
-    earmark back to ex_doc, as this would be circular.
+    ex_doc uses monocle. This means we can't have a dependency from
+    monocle back to ex_doc, as this would be circular.
 
     Instead, we run ex_doc from the command line.
-    
+
     ## Prerequisite
-    
+
     ### Install `ex_doc` as an escript on your system ( Elixir >= 1.4 needed)
 
         mix escript.install hex ex_doc
@@ -25,8 +25,8 @@ defmodule Mix.Tasks.Docs do
     ex_doc = "#{System.get_env |> Map.get("HOME")}/.mix/escripts/ex_doc"
     System.cmd("rm", ~w( -rf doc ))
     System.cmd(ex_doc,
-      ~w( Monocle #{current_version()} _build/dev/lib/earmark/ebin -m Monocle 
-          -o doc -p https://github/pragdave/earmark.html -f html -n -n https://hexdocs.pm/earmark/master ))
+      ~w( Monocle #{current_version()} _build/dev/lib/monocle/ebin -m Monocle
+          -o doc -p https://github/brianbroderick/monocle.html -f html -n -n https://hexdocs.pm/monocle/master ))
   end
 
   defp current_version do

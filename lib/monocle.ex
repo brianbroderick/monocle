@@ -4,7 +4,7 @@ defmodule Monocle do
 
   ## Dependency
 
-      { :earmark, "> x.y.z" }
+      { :monocle, "> x.y.z" }
 
   ## Usage
 
@@ -33,17 +33,17 @@ defmodule Monocle do
   ### Command line
 
       $ mix escript.build
-      $ ./earmark file.md
+      $ ./monocle file.md
 
   Some options defined in the `Monocle.Options` struct can be specified as command line switches.
 
   Use
 
-      $ ./earmark --help
+      $ ./monocle --help
 
   to find out more, but here is a short example
 
-      $ ./earmark --smartypants false --code-class-prefix "a- b-" file.md
+      $ ./monocle --smartypants false --code-class-prefix "a- b-" file.md
 
   will call
 
@@ -229,9 +229,9 @@ defmodule Monocle do
 
          <pre><code class="elixir lang-elixir language-elixir">...
 
-  As for all other options `code_class_prefix` can be passed into the `earmark` executable as follows:
+  As for all other options `code_class_prefix` can be passed into the `monocle` executable as follows:
 
-        earmark --code-class-prefix "language- lang-" ...
+        monocle --code-class-prefix "language- lang-" ...
 
   ## Security
 
@@ -361,7 +361,7 @@ defmodule Monocle do
     `iex` usage.
   """
   def version() do
-    with {:ok, version} = :application.get_key(:earmark, :vsn), do: version
+    with {:ok, version} = :application.get_key(:monocle, :vsn), do: version
   end
 
   @doc false

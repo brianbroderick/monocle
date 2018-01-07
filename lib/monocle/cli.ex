@@ -9,9 +9,9 @@ defmodule Monocle.CLI do
   @args """
   usage:
 
-     earmark --help
-     earmark --version
-     earmark [ options... <file> ]
+     monocle --help
+     monocle --version
+     monocle [ options... <file> ]
 
   convert file from Markdown to HTML.
 
